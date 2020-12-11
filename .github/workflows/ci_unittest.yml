@@ -40,3 +40,29 @@ jobs:
       - run: bash ./scripts/run_tests.sh
         env:
           TORCH_UTILS_COLLECT_ENV: 1
+
+      - run: coverage html
+        # if: github.event_name == 'push'
+      - uses: actions/upload-artifact@v2
+        # if: github.event_name == 'push'
+        with:
+          name: coverage-html
+          path: htmlcov/html/*
+
+  deploy_coverage:
+    runs-on: ubuntu-latest
+    needs: unittest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage-html
+          path: htmlcov/
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: htmlcov/
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: Coverage deploy
