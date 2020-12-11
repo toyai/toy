@@ -6,7 +6,7 @@ import shutil
 from argparse import ArgumentParser
 
 
-def __hash_ckpt(ckpt_file: str, jitted: bool = False, output_path: str = ""):
+def _hash_ckpt(ckpt_file: str, jitted: bool = False, output_path: str = ""):
     with open(ckpt_file, "rb") as file:
         sha_hash = hashlib.sha256(file.read()).hexdigest()
 
@@ -46,4 +46,4 @@ if __name__ == "__main__":
         help="Path to the hashed file",
     )
     args = parser.parse_args()
-    __hash_ckpt(args.ckpt_file, args.jitted, args.output_path)
+    _hash_ckpt(args.ckpt_file, args.jitted, args.output_path)
