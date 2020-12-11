@@ -1,4 +1,4 @@
 mamba env update -f environment.yml
-conda activate package
+conda activate toy
 pip install pre-commit flake8 black pylint isort
 pre-commit install

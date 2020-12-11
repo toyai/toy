@@ -1,6 +1,6 @@
 # conda / mamba env update -f environment.yml
 
-name: package
+name: toy
 
 channels:
   - pytorch
@@ -12,10 +12,7 @@ dependencies:
   - pip
   - numpy
   - pytorch
-  - ignite
-  - pytorch-lightning
+  - torchvision
 
   - pip:
-      - prettytable
       - coverage
-      - parameterized
