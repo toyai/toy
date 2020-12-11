@@ -25,7 +25,7 @@ class TestHashCheckpoint(TestCase):
             prev_hash = vision_filename[-1].split("/")[-1].split("-")[-1].strip(".pth")
             filename, sha_hash = _hash_ckpt(vision_filename[-1], output_path=ckpt_dir)
             self.assertEqual(sha_hash[:8], prev_hash)
-            model.load_state_dict(torch.load(filename), strict=True)
+            model.load_state_dict(torch.load(ckpt_dir + "/" + filename), strict=True)
 
 
 if __name__ == "__main__":
