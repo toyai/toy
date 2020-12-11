@@ -1,6 +1,8 @@
 name: ci_unittest
 
 on:
+  release:
+    types: [published]
   push:
     branches: [main]
   pull_request:
@@ -42,9 +44,9 @@ jobs:
           TORCH_UTILS_COLLECT_ENV: 1
 
       - run: coverage html
-        # if: github.event_name == 'push'
+        if: github.event_name == 'push'
       - uses: actions/upload-artifact@v2
-        # if: github.event_name == 'push'
+        if: github.event_name == 'push'
         with:
           name: coverage-html
           path: htmlcov/*
@@ -52,7 +54,7 @@ jobs:
   deploy_coverage:
     runs-on: ubuntu-latest
     needs: unittest
-    # if: github.event_name == 'push'
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
@@ -71,7 +73,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: unittest
-    # if: github.event_name == 'push'
+    if: github.event_name == 'release'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
