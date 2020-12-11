@@ -1,0 +1,13 @@
+{
+  "python.pythonPath": "~/miniconda3/envs/toy/bin/python",
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/miniconda3/envs/toy/bin/black",
+  "python.linting.flake8Path": "~/miniconda3/envs/toy/bin/flake8",
+  "python.linting.pylintPath": "~/miniconda3/envs/toy/bin/pylint",
+  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
+  "python.testing.pytestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.unittestEnabled": true
+}

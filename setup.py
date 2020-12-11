@@ -24,29 +24,24 @@ def find_version(*file_paths):
 
 readme = read("README.md")
 
-VERSION = find_version("package", "__init__.py")
+VERSION = find_version("toy", "__init__.py")
 
 extra = {}
 
-install_requires = [
-    "torch>=1.7.0",
-    "pytorch-ignite>=0.4.2",
-    "pytorch-lightning>=1.0.0",
-    "prettytable>=2.0.0",
-]
+install_requires = ["torch>=1.7.0", "torchvision>=0.8.0"]
 
-extra["testing"] = ["coverage>=5.3", "parameterized>=0.7.4"]
+extra["testing"] = ["coverage>=5.3"]
 extra["quality"] = ["pylint", "isort[colors]", "black", "flake8"]
 
 extra["dev"] = extra["testing"] + extra["quality"]
 
 
 setup(
-    name="toydet",
+    name="toy",
     version=VERSION,
     author="toyai",
-    url="https://github.com/toyai/template",
-    description="Just template",
+    url="https://github.com/toyai/toy",
+    description="Just toy functionalities",
     long_description_content_type="text/markdown",
     long_description=readme,
     license="MIT",
